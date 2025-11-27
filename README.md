@@ -42,6 +42,15 @@ APIgraph(Enhancing State-of-the-art Classifiers with API Semantics to
 感谢所有开源前辈与数据提供方！
 ## 数据准备说明
 该项目中的download.py是下载AndroZoo的代码，若要从别的数据库下载，请重新实现此模块。使用AndroZoo前先与管理者取得联系，获取api密钥，更改download.py中的密钥并且把latest.csv文件放入根目录中
+## 环境配置说明
+## 你可能需要修改的地方
+1.auto_extract.py中的years
+2.batch_decompile.py的最后面的需要反编译的路径，你可以根据需要增加或者减少
+3.check_vector.py的被检查的向量        X_mal = load(r'vectors/graph_vector\mal_2016.npy')        ；       X_ben = load(r'vectors/graph_vector\ben_2016.npy')
+4.smali_extractor.py最后需要被提取向量的反编译文件路径，你可以根据需要增加或者减少
+5.download.py中的下载年份，下载数量，线程数，阈值，密钥等
+6.model.py中的训练年份和测试年份，模型参数等
+7.可能还有一些我没注意到的地方，主要是路径和参数可能需要修改
 ## 项目结构说明
 首先该项目包含两大模块，APIgraph和derbin，根目录下的download.py是用来自动下载apk的脚本，model.py则是对最后获得的vector里面的向量进行建模。
 decompile_apks是用来存放download_apks中的apk使用apktools反编译之后的产物
