@@ -56,7 +56,7 @@ y_test_graph = np.concatenate([
 
 print(f"测试集就绪 → Drebin {X_test_dre.shape} | APIgraph {X_test_graph.shape}\n")
 
-
+print("单一年份的训练")
 def train_eval(model, X_tr, y_tr, X_te, y_te):
     if X_tr.shape[0] == 0 or X_tr.shape[1] == 0:
         return 0.0, 0.0, 0.0, 0.0
@@ -75,9 +75,6 @@ res = {
     'cum': {'drebin': {'SVM': [], 'RF': [], 'ENS': []}, 'graph': {'SVM': [], 'RF': [], 'ENS': []}}
 }
 
-print("=" * 70)
-print("开始只用单一年份而不是累加进行训练")
-print("=" * 70)
 
 for year in TRAIN_YEARS:
     print(f"\n仅用 {year} 年训练")
@@ -119,9 +116,7 @@ for year in TRAIN_YEARS:
     res['single']['graph']['ENS'].append(acc_ens)
 
     print(f"   APIgraph | SVM: {acc_svm:.4f}  RF: {acc_rf:.4f}  ENS: {acc_ens:.4f}")
-print("\n" + "=" * 70)
 print("开始 累加训练模式（统一2016维度）")
-print("=" * 70)
 
 cum_X_dre = None
 cum_y_dre = None
